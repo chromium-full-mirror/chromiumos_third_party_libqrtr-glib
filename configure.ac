@@ -2,8 +2,8 @@ dnl Process this file with autoconf to produce a configure script.
 AC_PREREQ([2.68])
 
 dnl The libqrtr-glib version number
-m4_define([qrtr_major_version], [0])
-m4_define([qrtr_minor_version], [900])
+m4_define([qrtr_major_version], [1])
+m4_define([qrtr_minor_version], [1])
 m4_define([qrtr_micro_version], [0])
 m4_define([qrtr_version],
           [qrtr_major_version.qrtr_minor_version.qrtr_micro_version])
@@ -89,7 +89,6 @@ AC_SUBST(QRTR_GLIB_LT_AGE)
 
 dnl Required dependency versions
 GLIB_VERSION=2.48
-GUDEV_VERSION=147
 
 GLIB_BUILD_SYMBOLS="-DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_48 -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_48 -DGLIB_DISABLE_DEPRECATION_WARNINGS"
 
