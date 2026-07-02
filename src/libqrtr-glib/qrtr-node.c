@@ -296,12 +296,11 @@ qrtr_node_remove_service_info (QrtrNode *self,
         return;
     }
 
-    service_index_remove_info (self->priv->service_index, service, info);
+    service_index_remove_info (self->priv->service_index, info->service, info);
     g_hash_table_remove (self->priv->port_index, GUINT_TO_POINTER (port));
     self->priv->service_list = g_list_remove (self->priv->service_list, info);
+    g_signal_emit (self, signals[SIGNAL_SERVICE_REMOVED], 0, info->service);
     qrtr_node_service_info_free (info);
-
-    g_signal_emit (self, signals[SIGNAL_SERVICE_REMOVED], 0, service);
 }
 
 /*****************************************************************************/
