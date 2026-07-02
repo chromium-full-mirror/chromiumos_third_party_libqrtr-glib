@@ -336,10 +336,7 @@ void qrtr_node_add_service_info (QrtrNode *node,
 
 G_GNUC_INTERNAL
 void qrtr_node_remove_service_info (QrtrNode *node,
-                                    guint32   service,
-                                    guint32   port,
-                                    guint32   version,
-                                    guint32   instance);
+                                    guint32   port);
 
 #endif /* defined (LIBQRTR_GLIB_COMPILATION) */
 

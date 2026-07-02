@@ -105,10 +105,7 @@ add_service_info (QrtrBus *self,
 static void
 remove_service_info (QrtrBus *self,
                      guint32  node_id,
-                     guint32  port,
-                     guint32  service,
-                     guint32  version,
-                     guint32  instance)
+                     guint32  port)
 {
     GList    *list_item;
     QrtrNode *node;
@@ -120,7 +117,7 @@ remove_service_info (QrtrBus *self,
     }
 
     node = QRTR_NODE (list_item->data);
-    qrtr_node_remove_service_info (node, service, port, version, instance);
+    qrtr_node_remove_service_info (node, port);
 
     if (!qrtr_node_peek_service_info_list (node)) {
         g_debug ("[qrtr] removing node %u", node_id);
@@ -179,7 +176,7 @@ qrtr_ctrl_message_cb (GSocket      *gsocket,
     if (type == QRTR_TYPE_DEL_SERVER) {
         g_debug ("[qrtr] removed server on %u:%u -> service %u, version %u, instance %u",
                  node_id, port, service, version, instance);
-        remove_service_info (self, node_id, port, service, version, instance);
+        remove_service_info (self, node_id, port);
         return TRUE;
     }
 

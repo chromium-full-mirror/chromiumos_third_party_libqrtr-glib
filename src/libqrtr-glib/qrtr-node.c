@@ -282,17 +282,14 @@ qrtr_node_add_service_info (QrtrNode *self,
 
 void
 qrtr_node_remove_service_info (QrtrNode *self,
-                               guint32   service,
-                               guint32   port,
-                               guint32   version,
-                               guint32   instance)
+                               guint32   port)
 {
     QrtrNodeServiceInfo *info;
 
     info = g_hash_table_lookup (self->priv->port_index, GUINT_TO_POINTER (port));
     if (!info) {
-        g_info ("[qrtr node@%u]: tried to remove unknown service %u, port %u",
-                self->priv->node_id, service, port);
+        g_info ("[qrtr node@%u]: tried to remove unknown service on port %u",
+                self->priv->node_id, port);
         return;
     }
 
